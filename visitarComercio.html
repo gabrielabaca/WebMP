@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="assets\css\style.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <!-- https://getbootstrap.com/docs/5.2 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    
+    <!-- FontAwesome -->
+    <!-- https://fontawesome.com/v6/search?m=free -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script src="assets/js/load" type="text/javascript"></script>
+    <title>WebML</title>
+</head>
+<body>
+    <div class="d-flex loading justify-content-center align-items-center">
+        <i class="fa-solid fa-spinner fa-spin-pulse fa-5x"></i>
+      </div>
+
+    <nav class="navbar border-bottom border-dark bg-light">
+        <div class="container-fluid">
+            <a href="/" class="navbar-brand" data-bs-toggle="tooltip" title=" Volver al dashboard">
+                <img class="d-inline-block" src="assets\img\logo_ml.webp" height="40px">
+            </a>
+            <div class="nav-data">
+                <p><i class="fa fa-user-tie"></i> <span>Gabriel Abaca</span></p>
+                <p><i class="fa fa-calendar-days"></i> <span>12/07/2022</span></p>
+               </div>
+        </div>
+      </nav>
+    
+    <div class="modal fade" id="modalInventario" tabindex="-1"  aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Inventario</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="list-group">
+                    <button type="button" class="list-group-item list-group-item-action list-group-item-secondary"
+                        data-inv-sn="CHB283126008327"
+                        data-inv-tipo="Point Mini">
+                        CHB283126008327 <strong>Point Mini</strong>
+                    </button>
+                    <button type="button" class="list-group-item list-group-item-action list-group-item-secondary"
+                        data-inv-sn="CHB283126004587"
+                        data-inv-tipo="Point Mini">
+                        CHB283126004587 <strong>Point Mini</strong>
+                    </button>
+                    <button type="button" class="list-group-item list-group-item-action list-group-item-secondary"
+                        data-inv-sn="1490527858"
+                        data-inv-tipo="Point Smart">
+                        1490527858 <strong>Point Smart</strong>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id="btnInv">Seleccionar</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <section class="section-buscar">
+        <div class="container pt-3 pb-3">
+            <div class="text-center mt-1 mb-3">
+            <h2>(#ID) Comercio</h2>
+            <p>Bartolome Mitre 2737 (Piso: Loc:35) <br>
+                Balvanera (Ciudad de Buenos Aires)</p>
+            </div>
+
+            <div class="d-flex flex-column align-items-center justify-content-center h-100">
+            <div class="col-12 col-lg-5">
+            <form class="row g-2 ">
+
+                <div class="row g-2 border p-1 pb-3 rounded box">
+                    <h5>Datos del comercio</h5>
+                    
+                    <div class="form-floating col-6 col-lg-6">
+                        <input disabled type="text" class="form-control" id="rubroComercio" placeholder="Comercio" value="Comercio">
+                        <label for="rubroComercio" >Rubro</label>
+                    </div>
+                    <div class="form-floating col-6 col-lg-6">
+                        <input disabled type="text" class="form-control" id="clasificacionComercio" placeholder="Clasificacion" value="HuntingDelivery">
+                        <label for="clasificacionComercio" class="form-label">Clasificacion</label>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-text" id="pointsComercio">Cant. Point Comprados</span>
+                        <input type="number" class="form-control" aria-describedby="pointsComercio">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-group-text" for="noCompra">No lo compra</label>
+                        <select class="form-select" id="noCompra">
+                            <option> </option>
+                            <option value="0">Ya lo Tiene</option>
+                            <option value="1">No le interesa</option>
+                            <option value="2">No esta el encargado</option>
+                            <option value="3">Comercio Cerrado</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label class="input-group-text" for="visitar">Visitar en</label>
+                        <select class="form-select" id="visitar">
+                            <option> </option>
+                            <option value="0">1 día</option>
+                            <option value="1">7 días</option>
+                            <option value="2">10 días</option>
+                            <option value="3">15 días</option>
+                            <option value="4">20 días</option>
+                            <option value="5">30 días</option>
+                        </select>
+                    </div>
+                    <div class="form-floating col-12 col-lg-12">
+                        <input type="email" class="form-control" id="emailComercio" placeholder="Email" >
+                        <label for="emailComercio">Email</label>
+                    </div>
+                    <div class="form-floating col-12 col-lg-12">
+                        <input type="tel" class="form-control" id="telefonoComercio" placeholder="Telefono">
+                        <label for="telefonoComercio">Telefono</label>
+                    </div>
+                    <h6>Ultima Visita: <small>24/03/2018</small></h6>
+                    <h6>Sin Observaciones</h6>
+                </div>
+
+                <div class="row g-2 border p-1 pb-3 rounded box" id="noContacto">
+                    <div class="form-check-reverse form-switch">
+                        <label class="form-check-label" for="switchNoContacto"><strong>No se puede contactar</strong></label>
+                        <input role="switch" class="form-check-input switch-danger" type="checkbox" id="switchNoContacto">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-group-text" for="visitar">Motivo</label>
+                        <select class="form-select" id="visitar">
+                            <option value="" selected=""></option>
+                            <option value="PDV Cerrado">PDV Cerrado</option>
+                            <option value="No existe PDV en Dirección">No existe PDV en Dirección</option>
+                            <option value="Domicilio Particular">Domicilio Particular</option>
+                            <option value="No existe Dirección">No existe Dirección</option>
+                            <option value="PDV Cerrado Definitivamente">PDV Cerrado Definitivamente</option>
+                            <option value="Cerrado por Cuarentena">Cerrado por Cuarentena</option>
+                            <option value="Zona Peligrosa">Zona Peligrosa</option>
+                        </select>
+                       
+                    </div>
+
+                </div>
+
+                <div class="row g-2 border p-1 pb-3 rounded box" id="encuesta">
+                    <h6>Encuesta / CheckList</h6>
+
+                    <div  class="g-2 border p-1 pb-3 rounded box">
+                        <p>SN de Productos: </p>
+                        <div class="container-fluid">
+                            <div class="d-inline" id="snContainer">
+                            </div>
+                            <a href="#" class="btn btn-secondary rounded pt-0 pb-0" id="sumarSn">Agregar Item <i class="fa fa-plus-circle"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="form-floating">
+                        <select class="form-select" id="visitar">
+                            <option value="" selected=""></option>
+                            <option value="No da información">No da información</option>
+                            <option value="Dejo de usar MP">Dejo de usar MP</option>
+                            <option value="No le interesa">No le interesa</option>
+                        </select>
+                        <label for="visitar">Motivo no encuesta</label>
+                    </div>
+                    <div class="form-floating">
+                        <select class="form-select" id="visitar" aria-placeholder="">
+                            <option value="" selected=""></option>
+                            <option value="Altas comisiones">Altas comisiones</option>
+                            <option value="Prefiere efectivo">Prefiere efectivo</option>
+                            <option value="Problemas con retiros">Problemas con retiros</option>
+                            <option value="Problemas con contracargos">Problemas con contracargos</option>
+                            <option value="Clientes no lo piden">Clientes no lo piden</option>
+                            <option value="Problemas con la cuenta (login / validación)">Problemas con la cuenta (login / validación)</option>
+                            <option value="No creo ni confío que sean de MP">No creo ni confío que sean de MP</option>
+                            <option value="No me han comunicado nada desde la marca">No me han comunicado nada desde la marca</option>
+                        </select>
+                        <label for="visitar">Motivo No incorpora QR</label>
+                    </div>
+                    
+                    <div class="form-floating">
+                        <select class="form-select" id="motivoInsatisfecho">
+                            <option value="" selected=""></option>
+                            <option value="Prob. de Login">Prob. de Login</option>
+                            <option value="Prob. Validacion de Identidad">Prob. Validacion de Identidad</option>
+                            <option value="Prob. Fraude">Prob. Fraude</option>
+                            <option value="Prob. al Recibir Pagos">Prob. al Recibir Pagos</option>
+                            <option value="Prob. al Retirar Dinero">Prob. al Retirar Dinero</option>
+                        </select>
+                        <label for="motivoInsatisfecho">Motivo Insatisfecho</label>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label class="input-group-text" for="qrEnPipe">QR Genérico en PIPE</label>
+                        <select class="form-select" id="qrEnPipe">
+                            <option value="" selected=""></option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label class="input-group-text" for="cartel4Pasos">Cartel/Carpita/Sticker de 4 Pasos</label>
+                        <select class="form-select" id="cartel4Pasos">
+                            <option value="" selected=""></option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label class="input-group-text" for="stickerVidriera">Sticker Sobre Vidrio para vidriera</label>
+                        <select class="form-select" id="stickerVidriera">
+                            <option value="" selected=""></option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </div>
+                    <div class="input-group col-6">
+                        <label class="input-group-text" for="viniloVidriera">Vinilo para vidriera</label>
+                        <select class="form-select" id="viniloVidriera">
+                            <option value="" selected=""></option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label class="input-group-text" for="dipticoPotinQr">Diptico Contacto con Tasas Point+QR</label>
+                        <select class="form-select" id="dipticoPotinQr">
+                            <option value="" selected=""></option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label class="input-group-text" for="dipticoPagarQr">Diptico como Pagar con QR</label>
+                        <select class="form-select" id="dipticoPagarQr">
+                            <option value="" selected=""></option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label class="input-group-text" for="dipticoPagarQr">Como Cobra?</label>
+                        <select class="form-select" id="dipticoPagarQr">
+                            <option value="" selected=""></option>
+                            <option value="QR">QR</option>
+                            <option value="Point">Point</option>
+                            <option value="Ambos">Ambos</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label class="input-group-text" for="posibilidad">Tiene Posibilidad ?</label>
+                        <select class="form-select" id="posibilidad">
+                            <option value=""></option>
+                            <option value="Si">Si</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label class="input-group-text" for="otro">Otro Si o NO</label>
+                        <select class="form-select" id="otro">
+                            <option value=""></option>
+                            <option value="Si">Si</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+                    
+                </div>
+                <div class="row g-2 border p-2 rounded box" id="boxComentario">
+                    <div class="form-control">
+                        <textarea class="form-control" placeholder="Comentario" rows="3" cols="20" id="comentario"></textarea>
+                        
+                    </div>
+                </div>
+                <div class="row g-2 border p-1 pb-3 rounded box">
+                    <h6>Cargar Imagenes</h6>
+                    <div id="imgInputs">
+                        <input class="form-control" id="file_1" type="file" onchange="newImg()" accept="image/*">
+                    </div>
+
+                    <ol class="list-group" id="imgList">
+                        
+                    </ol>
+                </div>
+
+
+                
+                <div class="d-flex flex-row col-12 justify-content-center buttons-f">
+
+                  <button class="btn-small" type="button" data-bs-toggle="modal" data-bs-target="#modalResultados" > 
+                    <i class="fa fa-floppy-disk fa-2x"></i> 
+                    <span class="label bottom">Guardar</span> 
+                  </button>
+                  <button class="btn-small" type="button" onclick="history.back()"> 
+                    <i class="fa fa-circle-chevron-left fa-2x last"></i> 
+                    <span class="label bottom">Volver</span> 
+                  </button>
+                </div>
+                
+              </form>
+            </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js" integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/conflict-detection.min.js" integrity="sha512-uf3F0AGh2mKjvRADOUBQMavmoKTm92Ud1tsRu4PZqltqjbP+ZYj+5i3ph6EE7Oto4hkpFPr6DEVlbw47i5SlAg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript">
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+
+    const modalInventario = new bootstrap.Modal('#modalInventario');
+    var sumarSn = document.getElementById('sumarSn');
+    var buttonsInventario = [].slice.call(document.querySelectorAll('#modalInventario button'))
+    var snContainer = document.getElementById('snContainer');
+    var snArray = []
+    var btnOkInv = document.getElementById('btnInv')
+    sumarSn.addEventListener('click', (event) => {
+        event.preventDefault()
+        modalInventario.show()
+    })
+
+    btnOkInv.addEventListener('click', () => {inventarioMngr()})
+
+    Array.from(buttonsInventario).forEach(button => {
+            if (button.dataset.invSn) {
+                
+                button.addEventListener('click', (event) => {
+                    if(Array.from(button.classList).find(val => val == 'list-group-item-success')){
+                        button.classList.remove('list-group-item-success')
+                        snArray = snArray.filter(item => item != button.dataset.invSn)
+                        
+                    }else{
+                        snArray.push(button.dataset.invSn)
+                        button.classList.add('list-group-item-success')
+                    };
+                })
+            }
+    });
+
+
+
+    var imgList = document.getElementById('imgList');
+    var inputImg = document.getElementById('file_1')
+    var inputs = []
+    var validIds = new Array('file_1','file_2','file_3','file_4','file_5')
+
+    var switchNoContacto = document.getElementById('switchNoContacto');
+    var encuesta = document.getElementById('encuesta')
+    var boxComentario = document.getElementById('boxComentario')
+
+    switchNoContacto.addEventListener('change', function() {
+        if (this.checked) {
+            encuesta.remove()
+        } else {
+            boxComentario.parentNode.insertBefore(encuesta, boxComentario)
+        }
+    });
+
+    function newImg() {
+        var [img] = inputImg.files
+
+        if(img){
+                if (!(inputImg.getAttribute('id') in inputs) && inputs.length < 5){
+                   
+                    inputs.push(inputImg.getAttribute('id'))
+
+                    var newId = []
+                    newId = inputs.filter(item => {
+                        return validIds.filter(val => val != item ? true : false)
+                    })
+
+                    var imgItem = document.createElement('li');
+                    var divName = document.createElement('div');
+                    var divImg = document.createElement('div');
+                    var input = document.createElement('input');
+                    var imgOb = document.createElement('img');
+                    var a = document.createElement('a')
+
+                    inputImg.classList.add('d-none')
+                    input.classList = 'form-control'
+                    input.setAttribute('type','file')
+                    input.setAttribute('id', validIds[newId.length])
+                    input.setAttribute("accept","image/*")
+                    input.setAttribute('onchange', 'newImg()')
+                    document.querySelector('#imgInputs').appendChild(input)
+
+                    divImg.classList = 'ms-3 col-12 justify-content-center';
+                    divName.classList = 'badge bg-primary text-wrap';
+                    divName.innerHTML = img.name;
+                    imgOb.src = URL.createObjectURL(img)
+                    imgOb.classList = 'img-fluid img-input';
+                    imgItem.classList = 'list-group-item d-flex justify-content-center align-items-center';
+                    imgItem.setAttribute('id', 'img_' + inputImg.getAttribute('id'))
+                    a.href = ''
+                    a.classList = 'btn btn-danger d-block'
+                    a.setAttribute('onClick','delImg(event)')
+                    a.setAttribute('data-input', inputImg.getAttribute('id'))
+                    a.innerHTML = "Borrar"
+
+                    divImg.appendChild(divName)
+                    divImg.appendChild(imgOb)
+                    divImg.appendChild(a)
+                    imgItem.appendChild(divImg) 
+                    imgList.appendChild(imgItem)
+
+                    inputImg = document.getElementById(validIds[newId.length])
+                    
+                }
+        }
+    };
+
+    function delImg(event) {
+        console.log('Inputs antes de borrar:')
+        console.log(inputs)
+
+        event.preventDefault()
+        var input = document.querySelector('#' + event['target'].getAttribute('data-input'));
+        var img = document.querySelector('#' +'img_' + event['target'].getAttribute('data-input'));
+
+        inputs = inputs.filter(item => item !== event['target'].getAttribute('data-input'))
+
+        input.classList.remove('d-none');
+        img.remove();
+        inputImg.remove();
+        inputImg = input;
+        if (inputs.length == 0){
+            inputImg.remove()
+            var input = document.createElement('input');
+            
+            input.classList = 'form-control'
+            input.setAttribute('type','file')
+            input.setAttribute('id', 'file_1')
+            input.setAttribute('onchange', 'newImg()')
+            document.querySelector('#imgInputs').appendChild(input)
+            inputImg = document.getElementById('file_1')
+        }
+
+    };
+    
+    function inventarioMngr(event){
+        if(event){
+            event.preventDefault()
+            modalInventario.show()
+        }else{
+            snContainer.innerHTML = ''
+        snArray.map(item => {
+            
+            var a = document.createElement('a')
+            var icon = document.createElement('i')
+            var input = document.createElement('input')
+            var span = document.createElement('span');
+
+            a.classList = 'btn btn-success d-inline rounded';
+            a.innerHTML = item;
+            a.setAttribute('onClick',"inventarioMngr(event)");
+            icon.classList = 'fa fa-xmark-circle';
+            input.setAttribute('value', item);
+            input.setAttribute('name',('addSm-'+item));
+            input.classList.add('d-none');
+            span.appendChild(icon)
+            a.appendChild(span)
+            snContainer.appendChild(a)
+            snContainer.appendChild(input)
+        })
+
+        modalInventario.hide()
+        
+    }
+    }
+</script>
+</html>

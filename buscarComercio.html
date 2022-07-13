@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="assets\css\style.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <!-- https://getbootstrap.com/docs/5.2 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    
+    <!-- FontAwesome -->
+    <!-- https://fontawesome.com/v6/search?m=free -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script src="assets/js/load" type="text/javascript"></script>
+    <title>WebML</title>
+</head>
+<body>
+  <div class="d-flex loading justify-content-center align-items-center">
+    <i class="fa-solid fa-spinner fa-spin-pulse fa-5x"></i>
+  </div>
+
+    <nav class="navbar border-bottom border-dark bg-light">
+        <div class="container-fluid">
+            <a href="/" class="navbar-brand" data-bs-toggle="tooltip" title=" Volver al dashboard">
+                <img class="d-inline-block" src="assets\img\logo_ml.webp" height="40px">
+            </a>
+            <div class="nav-data">
+              <p><i class="fa fa-user-tie"></i> <span>Gabriel Abaca</span></p>
+              <p><i class="fa fa-calendar-days"></i> <span>12/07/2022</span></p>
+             </div>
+        </div>
+      </nav>
+    
+
+      <div class="modal fade" id="modalResultados" tabindex="-1" aria-labelledby="Resultados de Busqueda" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Comercios</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <ol class="list-group list-group-numbered">
+                    <a class="list-group-item d-flex align-items-start">
+                      <div class="ms-2 me-auto">
+                        <div class="fw-bold">(#ID) Comercio <i class="fa fa-check-double text-primary"></i></div>
+                        Bartolome Mitre 2737 (Piso: Loc:35) <br>
+                        Balvanera (Ciudad de Buenos Aires)
+                      </div>
+                    </a>
+                    <a class="list-group-item d-flex align-items-start">
+                        <div class="ms-2 me-auto">
+                          <div class="fw-bold">(#ID) Comercio <i class="fa fa-x text-danger"></i></div>
+                          Bartolome Mitre 2737 (Piso: Loc:35) <br>
+                          Balvanera (Ciudad de Buenos Aires)
+                        </div>
+                    </a>
+                  </ol>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <section class="section-buscar">
+        <div class="container pt-3 pb-3">
+
+            <div class="text-center mt-1 mb-3">
+              <h2>Busqueda de Comercios</h2>
+            </div>
+
+            <div class="d-flex flex-column align-items-center justify-content-center h-100">
+              <div class="col-12 col-lg-5">
+
+              <form class="row g-2 ">
+                <div class="row g-2 border p-1 pb-3 rounded box">
+                <div class="form-floating col-4 col-lg-4">
+                    <input type="number" class="form-control" id="idComercio" placeholder="ID">
+                    <label for="idComercio">ID</label>
+                </div>
+                <div class="form-floating col-8 col-lg-8">
+                  <input type="text" class="form-control" id="comercio" placeholder="Comercio">
+                  <label for="comercio" class="form-label">Comercio</label>
+                </div>
+                <div class="form-floating col-12">
+                  <input type="email" class="form-control" id="emailComercio" placeholder="Email">
+                  <label for="emailComercio" class="form-label">Email</label>
+                </div>
+                <div class="form-floating col-8 col-lg-8">
+                  <input type="text" class="form-control" id="calleComercio" placeholder="Calle">
+                  <label for="calleComercio" class="form-label">Calle</label>
+                </div>
+                <div class="form-floating col-4 col-lg-4">
+                  <input type="number" class="form-control" id="alturaComercio" placeholder="Altura">
+                  <label for="alturaComercio" class="form-label">Altura</label>
+                </div>
+                <div class="form-floating col-12">
+                  <input type="text" class="form-control" id="localidadComercio" placeholder="Localidad">
+                  <label for="localidadComercio" class="form-label">Localidad</label>
+                </div>
+                <div class="col-12 border p-2 mt-2 me-2 rounded box">
+                    <label for="provinciaComercio" class="form-label">Provincia</label>
+                    <select id="provinciaComercio" class="form-select">
+                      <option value="1">Opcion 1</option>
+                      <option value="2">Opcion 2</option>
+                      <option value="3">Opcion 3</option>
+                      <option value="4">Opcion 4</option>
+                      <option value="5">Opcion 5</option>
+                      <option value="6">Opcion 6</option>
+                      <option value="7">Opcion 7</option>
+                      <option value="8">Opcion 8</option>
+                      <option value="9">Opcion 9</option>
+                      <option value="10">Opcion 10</option>
+                    </select>
+                  </div>
+                </div>
+                  <div class="d-flex flex-row col-12 justify-content-center buttons-f">
+                  
+                    <button class="btn-small" type="button" data-bs-toggle="modal" data-bs-target="#modalResultados" > 
+                      <i class="fa fa-search fa-2x"></i> 
+                      <span class="label bottom">Buscar</span> 
+                    </button>
+                    <button class="btn-small" type="button" onclick="history.back()"> 
+                      <i class="fa fa-circle-chevron-left fa-2x last"></i>  
+                      <span class="label bottom">Volver</span> 
+                    </button>
+                  
+                  </div>
+              </form>
+
+            </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js" integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/conflict-detection.min.js" integrity="sha512-uf3F0AGh2mKjvRADOUBQMavmoKTm92Ud1tsRu4PZqltqjbP+ZYj+5i3ph6EE7Oto4hkpFPr6DEVlbw47i5SlAg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+</script>
+</html>
