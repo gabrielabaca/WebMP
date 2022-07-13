@@ -9,6 +9,7 @@
     document.querySelector('form [type="submit"]').addEventListener('click', (event) =>{
         console.log(event)
     });
+    
     Array.from(buttonsPlanillas).forEach(link => {
     link.addEventListener('click', (event) => {
             selectPlanilla(link)
