@@ -6,7 +6,7 @@
 --------------------------------------------------------------*/
 body{
     min-height: 100vh;
-    background-image: radial-gradient(circle at 25% -25%, #d2d6f1 0, #2c74fc 25%, #011c42 100%);
+    background-image: radial-gradient(circle at 25% -25%, #455df8 0, #0447c4 25%, #000711 100%);
     
 }
 .loading{
@@ -16,6 +16,9 @@ body{
     height: 100vh;
     backdrop-filter: blur(15px);
     transition: display 2s ease-in-out;
+}
+.toast-container {
+    bottom: 0px;
 }
 .form-check-label{
     font-size: 15px;
@@ -42,7 +45,7 @@ body{
     background-color: green !important;
 }
 
-a, input, button, p, h6, h5, label{
+a, input, button, p, h6, h5, label, button{
     font-family: 'Lato', sans-serif !important;
 }
 
@@ -235,14 +238,23 @@ div[class^="icon"]{
     border-top-right-radius: 0px !important;
 }
 
+#snContainer{
+    padding-top: 10px;
+}
 #snContainer a{
-    font-size: 12px;
+    display: block;
+    font-size: 17px;
     text-decoration: none;
     padding-top: 2px;
     padding-bottom: 2px;
-    margin-right: 3px;
+    margin-top:5px;
+    font-style: italic;
+    letter-spacing: 1px;
 }
-
+#snContainer a strong{
+    margin-left: 5px;
+    font-style: normal;
+}
 #snContainer span{
     margin-left: 3px;
 }
@@ -270,6 +282,38 @@ div[class^="icon"]{
 .section-rendicion table:hover{
     cursor: pointer;
 }
+.section-rendicion .list-group-item-success h5,.section-rendicion .list-group-item-success p{
+    color:rgb(15, 81, 50)
+}
+
+.section-rendicion table h5{
+    font-weight: 600;
+    margin-bottom: 0px;
+}
+
+.section-rendicion table p{
+    margin-top:0px;
+    margin-bottom: 15px;
+    font-weight: 400;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+}
+.section-rendicion table span{
+    font-weight: 600;
+}
+.section-rendicion table small{
+    font-style: italic;
+    font-weight: 400;
+}
+.section-rendicion table i{
+    font-size: 20px;
+    margin-left: 5px;
+}
+
+#totalEfectivo, #totalTarjeta, #totalQr{
+    display: inline;
+    margin:0px;
+}
 
 /*--------------------------------------------------------------
 # INVENTARIO
@@ -286,11 +330,79 @@ div[class^="icon"]{
     overflow-wrap: break-word;
 }
 
+#modalDevolverInv .list-group-item, #modalInventario .list-group-item {
+    margin-top: 3px;
+    border-top-style: solid;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+}
+
+#modalDevolverInv .list-group-item:last-child, #modalInventario .list-group-item:last-child{
+    border-bottom-width: 1px;
+}
+#modalDevolverInv .list-group-item:first-child, #modalInventario .list-group-item:first-child{
+    border-top-width: 1px;
+}
+
+/*--------------------------------------------------------------
+# RUTAS
+--------------------------------------------------------------*/
+.section-rutas #map{
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    border-color:rgb(39, 39, 39);
+    margin-bottom: 15px;
+    min-height: 60vh;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
+.map-info{
+    min-width: 5%;
+    min-height: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 15px;
+
+}
+.map-info a, .section-rutas .list-group-item a{
+    font-family: 'Lato', sans-serif;
+    text-decoration: none;
+    margin-right: 15px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    padding: 5px 10px;
+    transition: all 0.2s;
+}
+.map-info a:hover, .section-rutas .list-group-item a:hover{
+    background-color: #0d6efd;
+    color: white;
+}
+.map-info span, .section-rutas .list-group-item span{
+    margin-right: 5px;
+    font-size: 20px;
+}
+
+.map-info p, .section-rutas .list-group-item p{
+    font-size: 16px;
+}
+/*--------------------------------------------------------------
+# MOBILE
+--------------------------------------------------------------*/
 @media only screen and (max-width: 600px) {
+    .toast-container {
+    }
     .nav-data {
         width: 50%;
     }
     .btn-inventario{
         width: 150px;
     }
+    .list-group-item a{
+        margin-top: 5px;
+        display: block !important;
+    }
   }
+
+

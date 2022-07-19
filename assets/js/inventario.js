@@ -17,8 +17,18 @@
         });
 
         Array.from(buttonsRecibirInventario).forEach(button => {
+            if(button.dataset.invSn){
+                listSnRecibir.push(button.dataset.invSn)
+                button.classList.add('list-group-item-success')
+                input = document.createElement('input')
+                input.setAttribute('id',button.dataset.invSn)
+                input.setAttribute('value',button.dataset.invSn)
+                input.setAttribute('type', 'text')
+                input.setAttribute('hidden','')
+                document.querySelector('#modalRecibirInv form').appendChild(input)
+            }
             if (button.dataset.invSn) {
-                
+                console.log(listSnRecibir)
                 button.addEventListener('click', (event) => {
                     recibirInventario(button)
                 })
@@ -31,7 +41,7 @@
                 button.classList.remove('list-group-item-success')
                 listSnDevolver = listSnDevolver.filter(item => item !== button.dataset.invSn)
                 document.getElementById(button.dataset.invSn).remove()
-                
+                button.querySelector('i').remove()
                 if (listSnDevolver.length==0){
                     document.querySelector('#modalDevolverInv [type="submit"]').setAttribute('disabled','')
                 }
@@ -40,12 +50,16 @@
                 document.querySelector('#modalDevolverInv [type="submit"]').removeAttribute('disabled')
                 button.classList.add('list-group-item-success')
                 listSnDevolver.push(button.dataset.invSn)
+
+                icon = document.createElement('i')
+                icon.classList = 'fa fa-check text-green'
                 input = document.createElement('input')
                 input.setAttribute('id',button.dataset.invSn)
                 input.setAttribute('value',button.dataset.invSn)
                 input.setAttribute('type', 'text')
                 input.setAttribute('hidden','')
                 document.querySelector('#modalDevolverInv form').appendChild(input)
+                button.appendChild(icon)
                 
             }
         }
@@ -62,15 +76,16 @@
                 }
                 
             }else{
-                document.querySelector('#modalRecibirInv [type="submit"]').removeAttribute('disabled')
-                button.classList.add('list-group-item-success')
-                listSnRecibir.push(button.dataset.invSn)
-                input = document.createElement('input')
-                input.setAttribute('id',button.dataset.invSn)
-                input.setAttribute('value',button.dataset.invSn)
-                input.setAttribute('type', 'text')
-                input.setAttribute('hidden','')
-                document.querySelector('#modalRecibirInv form').appendChild(input)
-                
+                if(button.dataset.invSn){
+                    document.querySelector('#modalRecibirInv [type="submit"]').removeAttribute('disabled')
+                    button.classList.add('list-group-item-success')
+                    listSnRecibir.push(button.dataset.invSn)
+                    input = document.createElement('input')
+                    input.setAttribute('id',button.dataset.invSn)
+                    input.setAttribute('value',button.dataset.invSn)
+                    input.setAttribute('type', 'text')
+                    input.setAttribute('hidden','')
+                    document.querySelector('#modalRecibirInv form').appendChild(input)
+                }
             }
         }

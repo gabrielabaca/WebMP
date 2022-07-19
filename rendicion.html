@@ -44,96 +44,72 @@
         <div class="row g-2 border p-1 pb-3 rounded box">
         <table class="table">
             
-            <thead>
-                <tr>
-                    <th>Fecha</th>
-                    <th>Info</th>
-                    <th>Totales</th>
-                </tr>
-            </thead>
             <tbody>
                 <tr 
-                data-efectivo="100"
+                data-efectivo="150"
                 data-tarjeta="200"
                 data-qr="300"
                 data-sn-planilla="1111">
                     <th>11/7/22</th>
-                    <td>
-                            <ul>
-                            <li>Tipo: <small>Comercio</small></li>
-                            <li>Direccion: <small>Av F de la cruz 1146</small></li>
-                            <li>ComproPoint: <small>1</small></li>
-                            <li>Point-AJ: <small>2</small></li>
-                            <li>Point-MN: <small>2</small></li>
-                            <li>Point-SM: <small>2</small></li>
-                            <li>Point-BT <small>2</small></li>
-                            </ul>
+                    <td>    
+                        <div class="container text-center">
+                            <h5>Nombre-Comercio</h5>
+                            <p>Av F de la cruz 1146</p>
+                        </div>
+                            <div class="d-flex row-cols-2 row-cols-lg-4 flex-wrap">
+                                <span>Tipo: <small>Comercio</small></span>
+                                <span>Direccion: <small>Av F de la cruz 1146</small></span>
+                                <span>ComproPoint: <small>1</small></span>
+                                <span>Point-AJ: <small>2</small></span>
+                                <span>Point-MN: <small>2</small></span>
+                                <span>Point-SM: <small>2</small></span>
+                                <span>Point-BT <small>2</small></span>
+                            </div>
+                            <div class="d-flex row-cols-3 text-wrap">
+                                <span>Efectivo: <br><small>$100</small></span>
+                                <span>Tarjeta: <br><small>$200</small></span>
+                                <span>QR: <br><small>$300</small></span>
+                            </div>
                     </td>
-                    <td>
-                        <ul>
-                            <li>Efectivo: <small>$100</small></li>
-                            <li>Tarjeta: <small>$200</small></li>
-                            <li>QR: <small></small>$300</li>
-                        </ul>
-                    </td>
+                    
                 </tr>
                 <tr 
-                data-efectivo="100"
-                data-tarjeta="200"
+                data-efectivo="0"
+                data-tarjeta="0"
                 data-qr="300"
                 data-sn-planilla="2222">
                     <th>11/7/22</th>
-                    <td>
-                            <ul>
-                            <li>Tipo: <small>Comercio</small></li>
-                            <li>Direccion: <small>Av F de la cruz 1146</small></li>
-                            <li>ComproPoint: <small>1</small></li>
-                            <li>Point-AJ: <small>2</small></li>
-                            <li>Point-MN: <small>2</small></li>
-                            <li>Point-SM: <small>2</small></li>
-                            <li>Point-BT <small>2</small></li>
-                            </ul>
+                    <td>    
+                        <div class="container text-center">
+                            <h5>Nombre-Comercio</h5>
+                            <p>Av F de la cruz 1146</p>
+                        </div>
+                            <div class="d-flex row-cols-2 row-cols-lg-4 flex-wrap">
+                                <span>Tipo: <small>Comercio</small></span>
+                                <span>Direccion: <small>Av F de la cruz 1146</small></span>
+                                <span>ComproPoint: <small>1</small></span>
+                                <span>Point-AJ: <small>2</small></span>
+                                <span>Point-MN: <small>2</small></span>
+                                <span>Point-SM: <small>2</small></span>
+                                <span>Point-BT <small>2</small></span>
+                            </div>
+                            <div class="d-flex row-cols-3 text-wrap">
+                                <span>Efectivo: <br><small>$0</small></span>
+                                <span>Tarjeta: <br><small>$0</small></span>
+                                <span>QR: <br><small>$300</small></span>
+                            </div>
                     </td>
-                    <td>
-                        <ul>
-                            <li>Efectivo: <small>$100</small></li>
-                            <li>Tarjeta: <small>$200</small></li>
-                            <li>QR: <small></small>$300</li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr 
-                data-efectivo="100"
-                data-tarjeta="200"
-                data-qr="300"
-                data-sn-planilla="3333">
-                    <th>11/7/22</th>
-                    <td>
-                            <ul>
-                            <li>Tipo: <small>Comercio</small></li>
-                            <li>Direccion: <small>Av F de la cruz 1146</small></li>
-                            <li>ComproPoint: <small>1</small></li>
-                            <li>Point-AJ: <small>2</small></li>
-                            <li>Point-MN: <small>2</small></li>
-                            <li>Point-SM: <small>2</small></li>
-                            <li>Point-BT <small>2</small></li>
-                            </ul>
-                    </td>
-                    <td>
-                        <ul>
-                            <li>Efectivo: <small>$100</small></li>
-                            <li>Tarjeta: <small>$200</small></li>
-                            <li>QR: <small></small>$300</li>
-                        </ul>
-                    </td>
+                    
                 </tr>
 
             </tbody>
             
         </table>
-        <p id="totalEfectivo">Efectivo: $<span>0</span></p>
-        <p id="totalTarjeta">Tarjeta: $<span>0</span></p>
-        <p id="totalQr">QR: $<span>0</span></p>
+        <div class="d-flex row-cols-3 text-center">
+        <p id="totalEfectivo">Efectivo:<br> $<span>0</span></p>
+        <p id="totalTarjeta">Tarjeta:<br> $<span>0</span></p>
+        <p id="totalQr">QR:<br> $<span>0</span></p>
+        </div>
     </div>
     <div class="d-flex flex-row col-12 justify-content-center buttons-f">
                   

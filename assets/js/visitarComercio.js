@@ -23,11 +23,14 @@
                 button.addEventListener('click', (event) => {
                     if(Array.from(button.classList).find(val => val == 'list-group-item-success')){
                         button.classList.remove('list-group-item-success')
-                        snArray = snArray.filter(item => item != button.dataset.invSn)
-                        
+                        snArray = snArray.filter(item => item[0] != button.dataset.invSn)
+                        button.querySelector('i').remove()
                     }else{
-                        snArray.push(button.dataset.invSn)
+                        icon = document.createElement('i')
+                        icon.classList = 'fa fa-check text-green'
+                        snArray.push([button.dataset.invSn, button.dataset.invTipo])
                         button.classList.add('list-group-item-success')
+                        button.appendChild(icon)
                     };
                 })
             }
@@ -76,7 +79,7 @@
                     input.classList = 'form-control'
                     input.setAttribute('type','file')
                     input.setAttribute('id', validIds[newId.length])
-                    input.setAttribute("accept","image/*")
+                    input.setAttribute("accept","image")
                     input.setAttribute('onchange', 'newImg()')
                     document.querySelector('#imgInputs').appendChild(input)
 
@@ -140,19 +143,17 @@
         snArray.map(item => {
             
             var a = document.createElement('a')
-            var icon = document.createElement('i')
+            var strong = document.createElement('strong')
             var input = document.createElement('input')
-            var span = document.createElement('span');
 
-            a.classList = 'btn btn-success d-inline rounded';
-            a.innerHTML = item;
-            a.setAttribute('onClick',"inventarioMngr(event)");
-            icon.classList = 'fa fa-xmark-circle';
-            input.setAttribute('value', item);
-            input.setAttribute('name',('addSm-'+item));
+            a.classList = 'btn btn-success';
+            a.innerHTML = item[0];
+            strong.innerHTML = item[1]
+            a.appendChild(strong)
+            input.setAttribute('value', item[0]);
+            input.setAttribute('name',('addSm-'+item[0]));
             input.classList.add('d-none');
-            span.appendChild(icon)
-            a.appendChild(span)
+            
             snContainer.appendChild(a)
             snContainer.appendChild(input)
         })

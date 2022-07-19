@@ -22,8 +22,6 @@ var buttons = [].slice.call(document.querySelectorAll('button'))
               case 'CerrarSesion':
                 console.log('Cerrar Sesion')
                 break;
-              default:
-                alert('AGREGAR EL BOTON A LINKS')
 
             }
             

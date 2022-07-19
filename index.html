@@ -39,9 +39,9 @@
           <div class="wrapper col-12 col-lg-10">
             <div class="wrap">
 
-          <button class="btn-big red" data-link="VisitarComercion">
-            <i class="fa fa-shop fa-3x"></i>
-            <span class="label bottom">Visitar Comercio</span> 
+          <button class="btn-big purple" data-link="VisitarComercion">
+            <i class="fa fa-magnifying-glass-location fa-3x"></i>
+            <span class="label bottom">Buscar Comercio</span> 
           </button>
 
           <button class="btn-big blue" data-link="Rutas">
@@ -50,7 +50,7 @@
           </button>
 
           <button class="btn-big orange" data-link="NuevoComercio">
-            <i class="fa fa-cart-plus fa-3x"></i>
+            <i class="fa fa-shop fa-3x"></i>
             <span class="label bottom">Nuevo Comercio</span> 
           </button>
 
@@ -74,7 +74,23 @@
     </div>
         
     </section>
-
+  <!-- 
+    ### PARA LOS MENSAJES DEL SISTEMA ###
+    Para que no se oculte automaticamente agregar: data-bs-autohide="false" 
+  -->
+    <div class="toast-container position-fixed mb-2 end-0 p-3">
+      <div id="sysMensaje" class="toast" role="alert" aria-live="assertive" aria-atomic="true" >
+        <div class="toast-header bg-danger bg-opacity-50 text-white">
+          <i class="fa fa-warning"></i>
+          <span class="me-auto ms-2">Mensaje del sistema</span>
+          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+          Aca va el mensaje del sistema
+        </div>
+      </div>
+    </div>
+ <!-- ####################################################### -->
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
@@ -85,6 +101,9 @@
     var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
       return new bootstrap.Tooltip(tooltipTriggerEl)
     })
+
+    const sysMensaje = new bootstrap.Toast(document.getElementById('sysMensaje'))
+    sysMensaje.show()
 
 </script>
 </html>
