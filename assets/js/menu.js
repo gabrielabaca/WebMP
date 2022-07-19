@@ -8,7 +8,7 @@ var buttons = [].slice.call(document.querySelectorAll('button'))
                 window.location.href = "/buscarComercio.html";
                 break;
               case 'Rutas':
-              
+                window.location.href = '/rutas.html'
                 break;
               case 'NuevoComercio':
                 window.location.href = '/visitarComercio.html'
